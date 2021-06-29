@@ -6,18 +6,16 @@ def main():
     from bs4 import BeautifulSoup as bs
     print("start program")
 
-    URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/',
-            'https://www.aljazeera.com/']  # URLS to be extracted from the 4 websites
-            'https://www.aljazeera.com/']  # URLS to be extracted from the 4 websites
-    page = requests.get(URLs) #so user input considered as string #Note in progrsamming first element is considered 0
-    #note that URLS are string type, so will user input, unless we specify user input is integer type
+    URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/']
+    page = requests.get(URLs)
     soup = bs(page.content, 'html.parser')
-    #print(soup)
 
-    Dict = {'https://www.bbc.co.uk/': links, 'https://news.sky.com/uk': links, 'https://www.foxnews.com/': links, 'https://www.aljazeera.com/': links}  # URLS to be extracted from the 4 websites
-
-    for key, value in URLs.items():
-        print(key, value)
+    atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
+    for link in atag:  # focus on 'a' tag where each elment is refered to as link
+        href = link.attrs['href']
+        Dict = {'https://www.bbc.co.uk/': href, 'https://news.sky.com/uk': href, 'https://www.foxnews.com/': href, 'https://www.aljazeera.com/': href}  # URLS to be extracted from the 4 websites
+        for key, value in Dict.items():
+            print(key, value)
 
 
     atag = soup.find_all('a')  #Never add this inside the for loop to be able to reuse soup.find_all('a)

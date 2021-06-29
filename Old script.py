@@ -1,7 +1,9 @@
-
+import requests
+from bs4 import BeautifulSoup as bs
 
 def main():
-
+    import requests
+    from bs4 import BeautifulSoup as bs
     print("start program")
     #URL = 'https://www.bbc.co.uk/'
     URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/' ] #URLS to be extracted from the 4 websites
