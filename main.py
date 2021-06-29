@@ -20,8 +20,10 @@ def main():
         print(link) #print each link #since last for loop updates the links, with link, we know print these elements
     print("\n")
 
-    print( "creating dictonaries")
-    URL = {'https://www.bbc.co.uk/': soup.find_all('a','href') }
+    print("creating dictonaries")
+
+    URLs = {'BBCNews':'https://www.bbc.co.uk/', 'SkyNews':'https://news.sky.com/uk', 'FoxNews':'https://www.foxnews.com/', 'AlJazeeraNews':'https://www.aljazeera.com/'}  # URLS to be extracted from the 4 websites
+
 
 
     userinput =input("Would you like to store the links in a text file? Enter Yes or No ")
