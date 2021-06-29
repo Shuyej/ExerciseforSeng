@@ -6,8 +6,9 @@ def main():
     print("start program")
 
     #URL = 'https://www.bbc.co.uk/'
-    URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk',  ]
-    page = requests.get(URLs[0])
+    URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/' ]
+    usernewschannelchoice = input("Please choose which news channel links you would like to extract, choose between 0 to 3, with 0 = BBC, 1 = SKy, 2 = Fox News, 3 = Al Jazeera: ")
+    page = requests.get(URLs[usernewschannelchoice])
     soup = bs(page.content, 'html.parser')
     #print(soup)
     links = []
