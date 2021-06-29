@@ -21,8 +21,9 @@ def main():
     print("\n")
 
     print("creating dictonaries")
-
     URLs = {'BBCNews':'https://www.bbc.co.uk/', 'SkyNews':'https://news.sky.com/uk', 'FoxNews':'https://www.foxnews.com/', 'AlJazeeraNews':'https://www.aljazeera.com/'}  # URLS to be extracted from the 4 websites
+    for key,value in URLs.items():
+        print(key,value)
 
 
 
