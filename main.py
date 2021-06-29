@@ -12,9 +12,9 @@ def main():
     #note that URLS are string type, so will user input, unless we specify user input is integer type
     soup = bs(page.content, 'html.parser')
     #print(soup)
-
+    atag = soup.find_all('a')  #Never add this inside the for loop to be able to reuse soup.find_all('a)
     links = [] #stores all links
-    for link in soup.find_all('a'): #focus on 'a' tag where each elment is refered to as link
+    for link in atag: #focus on 'a' tag where each elment is refered to as link
         links.append(link.get('href')) #update our array with elements being link, with link being URL as defined by 'get'
 #Now that information is stored on links we next print out the respective elements or data
     for link in links: #print out elements within array
