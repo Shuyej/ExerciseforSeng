@@ -20,11 +20,15 @@ def main():
         print(link) #print each link #since last for loop updates the links, with link, we know print these elements
     print("\n")
 
+    print( "creating dictonaries")
+    URL = {'https://www.bbc.co.uk/': soup.find_all('a','href') }
+
+
     userinput =input("Would you like to store the links in a text file? Enter Yes or No ")
     if userinput == "Yes":
         import requests
         from bs4 import BeautifulSoup as bs
-        file = open("Link.txt", "w")  # attempt to save URL links to a text document but did not work
+        file = open("Link.txt", "w")  # if you have a word file, then it will not work. THen go on directory --> Exercise for Seng in this case where project was created --> should find a txt file
         URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/','https://www.aljazeera.com/']  # URLS to be extracted from the 4 websites
         print("You will need to change the URL for websites to be stored to different text file")
         page = requests.get(URLs[0])
