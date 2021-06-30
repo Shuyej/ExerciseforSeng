@@ -8,8 +8,8 @@ def main():
     print("start program")
 
     URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/']
-    dict = {}
-    dict1 = {}
+    dictofURLlinks = {}
+    dictofimagelinks = {}
 
     for url in URLs:
 
@@ -25,19 +25,18 @@ def main():
             if not href.startswith('http'):
                 links.append(href)
 
-        dict[url] = links
-
-        print("'\n'")
+        dictofURLlinks[url] = links #This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
 
         images = soup.find_all('img', {'src': re.compile('.jpg')})  # re.compiles finds src tag of img element, then creates a jpg file of them
-        image_names_and_links = []
+        image_links = []
 
         for image in images:
-            image_names_and_links.append(image['src'] + '\n')
-            dict1[url] = image_names_and_links
+            data = image_links.append(image['src']) #update array image_links with each images available for each of the websuites looked at
 
-    print(dict)
-    print(dict1)
+        dictofimagelinks[url] = image_links
+
+    print(dictofURLlinks)
+    print(dictofimagelinks)
 
 
     print("end program")
