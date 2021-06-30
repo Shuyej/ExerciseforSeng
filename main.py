@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
+import re
 
 def main():
     import requests
@@ -7,25 +8,36 @@ def main():
     print("start program")
 
     URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/']
-    page = requests.get(URLs)
-    soup = bs(page.content, 'html.parser')
+    dict = {}
+    dict1 = {}
 
-    atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
-    for link in atag:  # focus on 'a' tag where each elment is refered to as link
-        href = link.attrs['href']
-        Dict = {'https://www.bbc.co.uk/': href, 'https://news.sky.com/uk': href, 'https://www.foxnews.com/': href, 'https://www.aljazeera.com/': href}  # URLS to be extracted from the 4 websites
-        for key, value in Dict.items():
-            print(key, value)
+    for url in URLs:
 
+        page = requests.get(url) #0 and variable
+        soup = bs(page.content, 'html.parser')
 
-    atag = soup.find_all('a')  #Never add this inside the for loop to be able to reuse soup.find_all('a)
-    links = [] #stores all links
-    for link in atag: #focus on 'a' tag where each elment is refered to as link
-        links.append(link.get('href')) #update our array with elements being link, with link being URL as defined by 'get'
-    # #Now that information is stored on links we next print out the respective elements or data
-    for link in links: #print out elements within array links
-        print(link) #print each link #since last for loop updates the links, with link, we know print these elements
-    print("\n")
+        atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
+        links = [] #reference --> What you can get back is where info
+
+        for obj in atag:
+            href = obj.get('href')
+
+            if not href.startswith('http'):
+                links.append(href)
+
+        dict[url] = links
+
+        print("'\n'")
+
+        images = soup.find_all('img', {'src': re.compile('.jpg')})  # re.compiles finds src tag of img element, then creates a jpg file of them
+        image_names_and_links = []
+
+        for image in images:
+            image_names_and_links.append(image['src'] + '\n')
+            dict1[url] = image_names_and_links
+
+    print(dict)
+    print(dict1)
 
 
     print("end program")

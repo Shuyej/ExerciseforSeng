@@ -21,15 +21,6 @@ def main():
         print(link) #print each link #since last for loop updates the links, with link, we know print these elements
     print("\n")
 
-    print("creating dictonaries")
-    #URLs = {'BBCNews':'https://www.bbc.co.uk/', 'SkyNews':'https://news.sky.com/uk', 'FoxNews':'https://www.foxnews.com/', 'AlJazeeraNews':'https://www.aljazeera.com/'}  # URLS to be extracted from the 4 websites
-    #Above is what i DID  initially
-    Dict = {'https://www.bbc.co.uk/': links, 'https://news.sky.com/uk': links, 'https://www.foxnews.com/': links, 'https://www.aljazeera.com/': links}  # URLS to be extracted from the 4 websites
-
-    for key,value in URLs.items():
-        print(key,value)
-
-
 
     userinput =input("Would you like to store the links in a text file? Enter Yes or No ")
     if userinput == "Yes":
