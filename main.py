@@ -3,8 +3,6 @@ from bs4 import BeautifulSoup as bs
 import re
 
 def main():
-    import requests
-    from bs4 import BeautifulSoup as bs
     print("start program")
 
     URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/']
@@ -27,19 +25,17 @@ def main():
 
         dictofURLlinks[url] = links #This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
 
-        images = soup.find_all('img', {'src': re.compile('.jpg')})  # re.compiles finds src tag of img element, then creates a jpg file of them
+        images = soup.find_all('img', {'src': re.compile('http')})  # re.compiles finds src tag of img element, then creates a http of them
         image_links = []
 
         for image in images:
-            data = image_links.append(image['src']) #update array image_links with each images available for each of the websuites looked at
+            image_links.append(image['src']) #update array image_links with each images available for each of the websuites looked at
 
         dictofimagelinks[url] = image_links
 
     print(dictofURLlinks)
     print(dictofimagelinks)
 
-
     print("end program")
-
 if __name__ == "__main__":
     main()
