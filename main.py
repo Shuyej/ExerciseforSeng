@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import re
+import Linkstowebsites
+import LinkstoImages
 
 def main():
     print("start program")
@@ -14,28 +16,17 @@ def main():
         page = requests.get(url) #0 and variable
         soup = bs(page.content, 'html.parser')
 
-        atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
-        links = [] #reference --> What you can get back is where info
-
-        for obj in atag:
-            href = obj.get('href')
-
-            if not href.startswith('http'):
-                links.append(href)
-
-        dictofURLlinks[url] = links #This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-
-        images = soup.find_all('img', {'src': re.compile('http')})  # re.compiles finds src tag of img element, then creates a http of them
-        image_links = []
-
-        for image in images:
-            image_links.append(image['src']) #update array image_links with each images available for each of the websuites looked at
-
-        dictofimagelinks[url] = image_links
+        dictofURLlinks[url] = Linkstowebsites.links(page,soup)  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+        dictofimagelinks[url] = LinkstoImages.links(page,soup)
 
     print(dictofURLlinks)
     print(dictofimagelinks)
 
     print("end program")
+
 if __name__ == "__main__":
     main()
+
+    # A module can define functions, classes, and variables.
+    #So when the interpreter runs a module, the __name__ variable will be set as  __main__ if the module that is being run is the main program.
+    #But if the code is importing the module from another module, then the __name__  variable will be set to that module’s name.
