@@ -14,5 +14,5 @@ def links(page,soup):
         if not href.startswith('http'):
             links.append(href)
 
-    return links
+    return links #values you want returned from the links function
 
