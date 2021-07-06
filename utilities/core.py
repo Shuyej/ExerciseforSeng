@@ -22,9 +22,13 @@ def getimages(soup):
 
         for image in images: #added get src to find src of image. or else as seen in line 17, it will not work
                 image_source = image.get('src') #find src for each element, so being more specific, which wasnt the case when using find_all
-                if not image_source.startswith('http://'):
-                    image_source = ("http://" + image_source)
-                    image_links.append(image_source)  # update array image_links with each images available for each of the websuites looked at
+                image_links.append(image_source)  # update array image_links with each images available for each of the websuites looked at
         #image_links.append() does the following; it is defined outside, but added to the for loop, and thus edited with updated elements
         #then we want to print out or return results so we use return image_links
         return image_links #values you want returned from the links function
+
+#It is not possible to conver non-http tags to jpg.
+
+# The logic of what I am doing here is to develop a function to produce the links to images and URLS.
+# How I am doing it is using for loops that sotrs each and every link, for a given URL as defined in main
+# Why I am designing functions is to ensure my codes are scalable for different urls

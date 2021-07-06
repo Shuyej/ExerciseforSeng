@@ -26,3 +26,7 @@ if __name__ == "__main__":
     # A module can define functions, classes, and variables.
     #So when the interpreter runs a module, the __name__ variable will be set as  __main__ if the module that is being run is the main program.
     #But if the code is importing the module from another module, then the __name__  variable will be set to that module’s name.
+
+# The logic of what I am doing here is to store links but for each URL which are known as the key, and for each key there are values which are links
+# How I am doing it is through dicts and for loop to be able to access each URL
+# Why I am using Dicts is because each identifier is unique with values, so it easier for clarity purposes to say what representes each identifier, where values represent identifier for which we want to be links to images and links to URLS
