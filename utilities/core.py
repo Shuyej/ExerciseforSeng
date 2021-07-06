@@ -16,7 +16,7 @@ def getlinks(soup): #page and soup are defined in the main body and passed down 
 #You dont have to return anything inside for loop, but the variable of interest. That variable has values of interest.
 
 def getimages(soup):
-        images = soup.select('img')  # re.compiles finds src tag of img element, then creates a http of them
+        images = soup.select('img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
         #find_all is not the only way to attain image links
         image_links = []
 
