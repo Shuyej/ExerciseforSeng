@@ -1,9 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import re
-import Linkstowebsites
-import LinkstoImages
-
+import utilities.core
 def main():
     print("start program")
 
@@ -15,8 +12,8 @@ def main():
         page = requests.get(url) #0 and variable
         soup = bs(page.content, 'html.parser')
 
-        dictofURLlinks[url] = Linkstowebsites.links(page,soup)  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-        dictofimagelinks[url] = LinkstoImages.links(page,soup)  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+        dictofURLlinks[url] = utilities.core.getlinks(soup)  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+        dictofimagelinks[url] = utilities.core.getimages(soup)  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
     print(dictofURLlinks)
     print(dictofimagelinks)
