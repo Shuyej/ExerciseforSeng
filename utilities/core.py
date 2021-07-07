@@ -28,7 +28,7 @@ def getimages(soup):
         #then we want to print out or return results so we use return image_links
         image_links_first = image_links[0]
 
-        return image_links_first #values you want returned from the links function
+        return image_links_first #values you want returned from the links function #Edit
 #image_links returns all list
 #image_links_first returns first element only
 
