@@ -12,7 +12,8 @@ def getlinks(soup): #page and soup are defined in the main body and passed down 
         if href.startswith('http'): #http is a string
             links.append(href) #despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
 
-    return links #values you want returned from the links function
+    links_first = links[0]
+    return links_first #values you want returned from the links function
 #You dont have to return anything inside for loop, but the variable of interest. That variable has values of interest.
 
 def getimages(soup):

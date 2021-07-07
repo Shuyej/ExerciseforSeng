@@ -16,7 +16,7 @@ def main():
         dictofimagelinks[url] = utilities.core.getimages(soup)  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
     print(dictofURLlinks["https://www.bbc.co.uk/"]) #return specific keys. Better to write key name than index 0  which represents key position. Meaning to access specific key elements, you use reference by name than by position
-    print(dictofimagelinks["https://www.bbc.co.uk/"])
+    print(dictofimagelinks["https://www.bbc.co.uk/"]) #returns bbc only. Can remove bbc to print all keys
 
     print("end program")
 
