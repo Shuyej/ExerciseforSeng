@@ -15,8 +15,8 @@ def main():
         dictofURLlinks[url] = utilities.core.getlinks(soup)  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
         dictofimagelinks[url] = utilities.core.getimages(soup)  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
-    print(dictofURLlinks)
-    print(dictofimagelinks)
+    print(dictofURLlinks["https://www.bbc.co.uk/"]) #return specific keys. Better to write key name than index 0  which represents key position. Meaning to access specific key elements, you use reference by name than by position
+    print(dictofimagelinks["https://www.bbc.co.uk/"])
 
     print("end program")
 
@@ -30,3 +30,8 @@ if __name__ == "__main__":
 # The logic of what I am doing here is to store links but for each URL which are known as the key, and for each key there are values which are links
 # How I am doing it is through dicts and for loop to be able to access each URL
 # Why I am using Dicts is because each identifier is unique with values, so it easier for clarity purposes to say what representes each identifier, where values represent identifier for which we want to be links to images and links to URLS
+
+
+#print out the keys of a dictionary
+#print out the first values of a list
+#then classes then abstract classes
