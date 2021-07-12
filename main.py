@@ -1,14 +1,14 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import utilities.core #new library replacing utilities.core
+import utilities.Classes #new library replacing utilities.core
 
 def main():
     print("start program")
+    Classes.links. #How to link classes
 
     URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/']
     dictofURLlinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
     dictofimagelinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
-
 
     for url in URLs:
         page = requests.get(url) #0 and variable
