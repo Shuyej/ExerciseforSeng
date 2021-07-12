@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import utilities.Classes #new library replacing utilities.core
+import utilities.core #new library replacing utilities.core
 
 def main():
     print("start program")
@@ -8,17 +8,17 @@ def main():
     URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/']
     dictofURLlinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
     dictofimagelinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
-    foxnewsobj = links()
+
 
     for url in URLs:
         page = requests.get(url) #0 and variable
         soup = bs(page.content, 'html.parser')
 
-        dictofURLlinks[url] = utilities.Classes.getlinks(soup)  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-        dictofimagelinks[url] = utilities.Classes.getimages(soup)  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+        dictofURLlinks[url] = utilities.core.getlinks(soup)[0]  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+        dictofimagelinks[url] = utilities.core.getimages(soup)[0]  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
-    #print(dictofURLlinks["https://www.foxnews.com/"]) #return specific keys. Better to write key name than index 0  which represents key position. Meaning to access specific key elements, you use reference by name than by position
-    #print(dictofimagelinks["https://www.foxnews.com/"]) #returns bbc only. Can remove bbc to print all keys
+    print(dictofURLlinks["https://www.foxnews.com/"]) #return specific keys. Better to write key name than index 0  which represents key position. Meaning to access specific key elements, you use reference by name than by position
+    print(dictofimagelinks["https://www.foxnews.com/"]) #returns bbc only. Can remove bbc to print all keys
 
 
 
