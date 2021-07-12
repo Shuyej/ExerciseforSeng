@@ -14,8 +14,8 @@ def main():
         page = requests.get(url) #0 and variable
         soup = bs(page.content, 'html.parser')
 
-        dictofURLlinks[url] = utilities.core.getlinks(soup)[0]  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-        dictofimagelinks[url] = utilities.core.getimages(soup)[0]  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+        dictofURLlinks[url] = utilities.core.getlinks(soup)  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+        dictofimagelinks[url] = utilities.core.getimages(soup)  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
     print(dictofURLlinks) #return specific keys. Better to write key name than index 0  which represents key position. Meaning to access specific key elements, you use reference by name than by position i.e. dictname["element name"]
     print(dictofimagelinks) #returns bbc only. Can remove bbc to print all keys
