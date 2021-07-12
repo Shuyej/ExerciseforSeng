@@ -17,9 +17,14 @@ def main():
         dictofURLlinks[url] = utilities.core.getlinks(soup)  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
         dictofimagelinks[url] = utilities.core.getimages(soup)  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
-    print(dictofURLlinks) #return specific keys. Better to write key name than index 0  which represents key position. Meaning to access specific key elements, you use reference by name than by position i.e. dictname["element name"]
-    print(dictofimagelinks) #returns bbc only. Can remove bbc to print all keys
+    for url in URLs:
+        try:
+            print(dictofURLlinks[url][300]) #i.e. dictname["element name"]
+            print(dictofimagelinks[url][30]) #returns bbc only. Can remove bbc to print all keys
     #functions return all elements, it is only in main you specify which elements you want
+        except Exception:
+            print("Index out of range for " + url)
+
 
     print("end program")
 if __name__ == "__main__":
