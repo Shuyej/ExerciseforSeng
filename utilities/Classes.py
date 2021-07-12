@@ -13,8 +13,7 @@ class links:
             if href.startswith('http'): #http is a string
                 links.append(href) #despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
 
-        links_first = links
-        return links_first #values you want returned from the links function
+        return links #values you want returned from the links function
 #You dont have to return anything inside for loop, but the variable of interest. That variable has values of interest.
 
     def getimages(self, soup):
@@ -28,9 +27,8 @@ class links:
                   # update array image_links with each images available for each of the websuites looked at
         #image_links.append() does the following; it is defined outside, but added to the for loop, and thus edited with updated elements
         #then we want to print out or return results so we use return image_links
-        image_links_first = image_links
 
-        return image_links_first #values you want returned from the links function #Edit
+        return image_links #values you want returned from the links function #Edit
 
 #image_links returns all list
 #image_links_first returns first element only

@@ -19,11 +19,9 @@ def main():
 
     print(dictofURLlinks["https://www.foxnews.com/"]) #return specific keys. Better to write key name than index 0  which represents key position. Meaning to access specific key elements, you use reference by name than by position
     print(dictofimagelinks["https://www.foxnews.com/"]) #returns bbc only. Can remove bbc to print all keys
-
-
+    #functions return all elements, it is only in main you specify which elements you want
 
     print("end program")
-
 if __name__ == "__main__":
     main() #ensures anything written in the main function is printed, and two print files from the packages Linktowebsites and Linkstoimages, important to import them else you have to use print(filename.__name__)
 
