@@ -4,7 +4,7 @@ import utilities.Classes #new library replacing utilities.core
 
 def main():
     print("start program")
-    Classes.links. #How to link classes
+
 
     URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/', 'https://www.aljazeera.com/']
     dictofURLlinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
@@ -14,8 +14,12 @@ def main():
         page = requests.get(url) #0 and variable
         soup = bs(page.content, 'html.parser')
 
-        dictofURLlinks[url] = utilities.core.getlinks(soup)  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-        dictofimagelinks[url] = utilities.core.getimages(soup)  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+      BBCnewsobj = utilities.Classes.links()  #define object to attain info of foxnews
+
+      foxnewsobj = utilities.Classes.links() #define object to attain info of foxnews
+
+        dictofURLlinks[url] = utilities.Classes.links.getlinks(self,soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+        dictofimagelinks[url] = utilities.Classes.links.getimages(soup) #How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
     for url in URLs:
         try:
