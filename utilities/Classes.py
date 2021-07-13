@@ -2,8 +2,12 @@ class links:
     import re  # pass this library as it has variables which we will use
     from PIL import Image  # import PIL function from library Image
     def __init__(self, URLs): #want to print out all the initial statements in the initialiser, and the statements inform us all the URLs in our code
-        self.URLs   #Declare URLS here as I want to use them in the program
+        self.URLs[0] = 'https://www.bbc.co.uk/'  #Declare URLS here as I want to use them in the program #And I want to specify which URL refers to which link
+        self.URLs[1] = 'https://news.sky.com/uk'
+        self.URLs[2] = 'https://www.foxnews.com/'
+        self.URLs[3] = 'https://www.aljazeera.com/'
         #Inside init, otherwise known as the constructor we declare the global variables
+        #URL is a global variable, and each of its elements are specified so it is globally know what its element implies
 
     def getlinks(self, soup): #page and soup are defined in the main body and passed down to be executed by function for function to work
         atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
