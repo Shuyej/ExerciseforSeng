@@ -1,3 +1,6 @@
+import requests
+from bs4 import BeautifulSoup as bs
+
 class links:
     import re  # pass this library as it has variables which we will use
     from PIL import Image  # import PIL function from library Image
@@ -8,6 +11,8 @@ class links:
         self.URLs[3] = 'https://www.aljazeera.com/'
         #Inside init, otherwise known as the constructor we declare the global variables
         #URL is a global variable, and each of its elements are specified so it is globally know what its element implies
+        page = requests.get(URLs[0])  # 0 and variable
+        soup = bs(page.content, 'html.parser')
 
     def getlinks(self, soup): #page and soup are defined in the main body and passed down to be executed by function for function to work
         atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)

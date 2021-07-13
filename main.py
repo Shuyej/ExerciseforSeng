@@ -5,24 +5,22 @@ import utilities.Classes #new library replacing utilities.core
 def main():
     print("start program")
 
-    dictofBBCURLlinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
-    dictofBBCimagelinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
+    #dictofBBCURLlinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
+    #dictofBBCimagelinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
 
-    URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/',
-       'https://www.aljazeera.com/']  # Notice self.URLS is key to utilise the variable
+    #URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/',
+      # 'https://www.aljazeera.com/']  # Notice self.URLS is key to utilise the variable
 
     #for url in URLs:
-    page = requests.get(URLs) #0 and variable
-    soup = bs(page.content, 'html.parser')
     BBCnewsobj = utilities.Classes.links()   #define object to attain info of BBC News as it is a object of class links stored in utilities.classes package
     Skynewsobj = utilities.Classes.links()   #define object to attain info of Sky News as it is a object of class links stored in utilities.classes package
     Foxnewsobj = utilities.Classes.links()   #define object to attain info of Fox News as it is a object of class links stored in utilities.classes package
     AlJazeeranewsobj = utilities.Classes.links() #define object to attain info of Al Jazeera News as it is a object of class links stored in utilities.classes package
 
-    dictofBBCURLlinks[BBCnewsobj]=  BBCnewsobj.getlinks(soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-    dictofBBCimagelinks[URLs]['https://www.bbc.co.uk/'] =  BBCnewsobj.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+    #dictofBBCURLlinks[BBCnewsobj]=  BBCnewsobj.getlinks(soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+    #dictofBBCimagelinks[URLs]['https://www.bbc.co.uk/'] =  BBCnewsobj.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
-    print(dictofBBCURLlinks())
+    print(BBCnewsobj.URLs[0])
    #Below is a ty error example
     #for url in URLs:
      #   try:
