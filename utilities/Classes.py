@@ -1,11 +1,12 @@
-import re #pass this library as it has variables which we will use
-from PIL import Image #import PIL function from library Image
+
 
 class links:
-
+    import re  # pass this library as it has variables which we will use
+    from PIL import Image  # import PIL function from library Image
     def __init__(self, URLs): #want to print out all the initial statements in the initialiser, and the statements inform us all the URLs in our code
-        for url in URLs:
-            self.output = "All the URLs are" + url
+        self.URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/','https://www.aljazeera.com/'] #Notice self.URLS is key to utilise the variable
+        #Declare URLS here as I want to use them in the program
+        #Inside init, otherwise known as the constructor we declare the global variables
 
     def getlinks(self, soup): #page and soup are defined in the main body and passed down to be executed by function for function to work
         atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
@@ -18,8 +19,8 @@ class links:
             if href.startswith('http'): #http is a string
                 links.append(href) #despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
 
-        return self.links #values you want returned from the links function
-#You dont have to return anything inside for loop, but the variable of interest. That variable has values of interest.
+        return self.links #self.links was created as a local variable even if it wasnt passed in the paranthesis
+    #usually passing through the paranthesis is a way to declare local variables
 
     def getimages(self, soup):
         images = soup.select('img') # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
