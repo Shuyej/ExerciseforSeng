@@ -1,11 +1,8 @@
-
-
 class links:
     import re  # pass this library as it has variables which we will use
     from PIL import Image  # import PIL function from library Image
     def __init__(self, URLs): #want to print out all the initial statements in the initialiser, and the statements inform us all the URLs in our code
-        self.URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/','https://www.aljazeera.com/'] #Notice self.URLS is key to utilise the variable
-        #Declare URLS here as I want to use them in the program
+        self.URLs   #Declare URLS here as I want to use them in the program
         #Inside init, otherwise known as the constructor we declare the global variables
 
     def getlinks(self, soup): #page and soup are defined in the main body and passed down to be executed by function for function to work
@@ -21,6 +18,7 @@ class links:
 
         return self.links #self.links was created as a local variable even if it wasnt passed in the paranthesis
     #usually passing through the paranthesis is a way to declare local variables
+    #self.x is key for classes to recognise functions
 
     def getimages(self, soup):
         images = soup.select('img') # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
@@ -29,7 +27,7 @@ class links:
         for image in images: #added get src to find src of image. or else as seen in line 17, it will not work
                 image_source = image.get('src') #find src for each element, so being more specific, which wasnt the case when using find_all
                 if not image == "None": #prints out elements which are not none. Thus these image are elements of images which is of our interest
-                    image_links.append(image_source)
+                    self.image_links.append(image_source) #image_links alone isnt recognised as a variable
                   # update array image_links with each images available for each of the websuites looked at
         #image_links.append() does the following; it is defined outside, but added to the for loop, and thus edited with updated elements
         #then we want to print out or return results so we use return image_links
@@ -38,8 +36,7 @@ class links:
 
 #image_links returns all list
 #image_links_first returns first element only
-
-#It is not possible to conver non-http tags to jpg.
+#It is not possible to conver non-http tags to jpg. But for websites that miss http tag only, we can add http to fix the error, and convert jpg files to http. In a way, we just implement them to http, not convert. There is a difference.
 
 # The logic of what I am doing here is to develop a function to produce the links to images and URLS.
 # How I am doing it is using for loops that sotrs each and every link, for a given URL as defined in main
