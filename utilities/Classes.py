@@ -1,17 +1,16 @@
 import requests
 from bs4 import BeautifulSoup as bs
+import re  # pass this library as it has variables which we will use
+from PIL import Image  # import PIL function from library Image #libraries defined outside the class
 
-class links:
-    import re  # pass this library as it has variables which we will use
-    from PIL import Image  # import PIL function from library Image
+class links(): #add brackets to class
     #initially passed four different variables which is illogical since each URL should be a object
     def __init__(self, URL): #want to print out all the initial statements in the initialiser, and the statements inform us all the URLs in our code
           self.URL = str(URL)   #Declare URLS here as I want to use them in the program #And I want to specify which URL refers to which link
 
 #Use string since our URL are string
-        #Inside init, otherwise known as the constructor we declare the global variables
-        #URL is a global variable, and each of its elements are specified so it is globally know what its element implies
-
+#Inside init, otherwise known as the constructor we declare the global variables
+#URL is a global variable, and each of its elements are specified so it is globally know what its element implies
 
     def getlinks(self, soup): #page and soup are defined in the main body and passed down to be executed by function for function to work
         atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
@@ -23,11 +22,11 @@ class links:
 
             if href.startswith('http'): #http is a string
                 self.links.append(href) #despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
-
-                if not href.startwith('http'): #added if statement to consider http, so for objects with no http elements we add http
-                    self.links.append("https" + href) #even if self.links not defined within for loop, so not noticed as a for loop variable
+#http for images
+          #  elif not href.startwith('http'): #added if statement to consider http, so for objects with no http elements we add http
+           #         self.links.append("https:" + href) #even if self.links not defined within for loop, so not noticed as a for loop variable
                     #self.links is a local function so it is updated within the function
-
+            #else ##justify
         return self.links #self.links was created as a local variable even if it wasnt passed in the paranthesis
     #usually passing through the paranthesis is a way to declare local variables
     #self.x is key for classes to recognise functions
