@@ -16,6 +16,7 @@ def main():
     Foxnewsobj = utilities.Classes.links('https://www.foxnews.com/')   #define object to attain info of Fox News as it is a object of class links stored in utilities.classes package
     AlJazeeranewsobj = utilities.Classes.links('https://www.aljazeera.com/') #define object to attain info of Al Jazeera News as it is a object of class links stored in utilities.classes package
 #So, each links are passed through the class link, storing them as variables of that class
+#Above store the URL links in a global variable refered to as URL
 
     page = requests.get(BBCnewsobj)  # 0 and variable
     soup = bs(page.content, 'html.parser')
