@@ -28,7 +28,7 @@ class BBC(links):
                 self.links.append(href)  # despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
 
             if not href.startswith('http'):   #elif is used in Python not elseif
-                self.links.append("https://search.bbc.co.uk/search"+ href)
+                self.links.append("https://search.bbc.co.uk/search"+ href) #note if you have x + z then there will be a space
 
         return self.links  # self.links was created as a local variable even if it wasnt passed in the paranthesis
 
@@ -36,13 +36,18 @@ class BBC(links):
         images = soup.select('img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
         # find_all is not the only way to attain image links
         self.image_links = []
+
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
             image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
+
             if not image == "None":  # prints out elements which are not none. Thus these image are elements of images which is of our interest
                 self.image_links.append(image_source)  # image_links alone isnt recognised as a variable
 
-            elif not image.startwith('http'):
-                self.image_links.append("https" + image_source)
+
+            #if not image.startwith('http'):
+                #self.image_links.append("https" + image_source)
+            #line 45 and 46 will not run as you cant add http elements to jpg files
+
         return self.image_links  # values you want returned from the links function #Edit
 
 class Sky(links):
@@ -60,16 +65,18 @@ class Sky(links):
 
     def getimages(self, soup):
         images = soup.select('img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
-        # find_all is not the only way to attain image links
-        self.image_links = []
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
             image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
+
             if not image == "None":  # prints out elements which are not none. Thus these image are elements of images which is of our interest
                 self.image_links.append(image_source)  # image_links alone isnt recognised as a variable
 
-            if not image.startwith('http'):
-                self.image_links.append("https" + image_source)
+            # if not image.startwith('http'):
+            # self.image_links.append("https" + image_source)
+            # line 45 and 46 will not run as you cant add http elements to jpg files
+
         return self.image_links  # values you want returned from the links function #Edit
+
 
 class Fox(links):
     def getlinks(self, soup):
@@ -85,16 +92,19 @@ class Fox(links):
         return self.links  # self.links was created as a local variable even if it wasnt passed in the paranthesis
 
     def getimages(self, soup):
-        images = soup.select('img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
-        # find_all is not the only way to attain image links
-        self.image_links = []
+        images = soup.select(
+            'img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
-            image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
+            image_source = image.get(
+                'src')  # find src for each element, so being more specific, which wasnt the case when using find_all
+
             if not image == "None":  # prints out elements which are not none. Thus these image are elements of images which is of our interest
                 self.image_links.append(image_source)  # image_links alone isnt recognised as a variable
 
-            if not image.startwith('http'):
-                self.image_links.append("https" + image_source)
+            # if not image.startwith('http'):
+            # self.image_links.append("https" + image_source)
+            # line 45 and 46 will not run as you cant add http elements to jpg files
+
         return self.image_links  # values you want returned from the links function #Edit
 
 class AlJazeera(links):
@@ -111,15 +121,17 @@ class AlJazeera(links):
         return self.links  # self.links was created as a local variable even if it wasnt passed in the paranthesis
 
     def getimages(self, soup):
-        images = soup.select('img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
-        # find_all is not the only way to attain image links
-        self.image_links = []
+        images = soup.select(
+            'img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
-            image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
+            image_source = image.get(
+                'src')  # find src for each element, so being more specific, which wasnt the case when using find_all
+
             if not image == "None":  # prints out elements which are not none. Thus these image are elements of images which is of our interest
                 self.image_links.append(image_source)  # image_links alone isnt recognised as a variable
 
-            if not image.startwith('http'):
-                self.image_links.append("https" + image_source)
-        return self.image_links  # values you want returned from the links function #Edit
+            # if not image.startwith('http'):
+            # self.image_links.append("https" + image_source)
+            # line 45 and 46 will not run as you cant add http elements to jpg files
 
+        return self.image_links  # values you want returned from the links function #Edit
