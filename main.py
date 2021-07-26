@@ -18,12 +18,13 @@ def main():
 #So, each links are passed through the class link, storing them as variables of that class
 #Above store the URL links in a global variable refered to as URL
 
-    page = requests.get(BBCnewsobj)  # 0 and variable
+    page = requests.get(BBCnewsobj.URL)  #make it clear you want the URL of the object
     soup = bs(page.content, 'html.parser')
 
-    dictofURLlinks[BBCnewsobj]=  BBCnewsobj.getlinks() #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-    dictofimagelinks[BBCnewsobj]=  BBCnewsobj.getimages()#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+    dictofURLlinks[BBCnewsobj]= BBCnewsobj.getlinks() #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+    dictofimagelinks[BBCnewsobj]= BBCnewsobj.getimages()#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
+    print(dictofURLlinks)
     print(dictofimagelinks)
    #Below is a ty error example
     #for url in URLs:

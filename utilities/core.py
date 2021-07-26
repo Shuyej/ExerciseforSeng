@@ -1,5 +1,6 @@
 import re #pass this library as it has variables which we will use
 from PIL import Image #import PIL function from library Image
+#Functions to extact href and image links but without classes
 
 def getlinks(soup): #page and soup are defined in the main body and passed down to be executed by function for function to work
     atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
