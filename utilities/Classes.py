@@ -85,22 +85,24 @@ class Sky(links):
 class Fox(links):
     def getlinks(self, soup):
         atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
-        self.links = []  #
+        self.links = []
 
         for obj in atag:
             href = obj.get('href')  ##inside for loops we return variables
 
             if href.startswith('http'):  # http is a string
-                self.links.append(
-                    href)  # despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
+               self.links.append(href)  # despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
+
+            if not href.startswith('http'):  # http is a string
+                self.links.append( "https:"+href)  #add https: to extract links for  non-http elements
+
         return self.links  # self.links was created as a local variable even if it wasnt passed in the paranthesis
 
     def getimages(self, soup):
-        images = soup.select(
-            'img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
+        images = soup.select('img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
+        self.image_links = []
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
-            image_source = image.get(
-                'src')  # find src for each element, so being more specific, which wasnt the case when using find_all
+            image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
 
             if not image == "None":  # prints out elements which are not none. Thus these image are elements of images which is of our interest
                 self.image_links.append(image_source)  # image_links alone isnt recognised as a variable

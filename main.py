@@ -20,11 +20,11 @@ def main():
 #So, each links are passed through the class link, storing them as variables of that class
 #Above store the URL links in a global variable refered to as URL
 
-    page = requests.get(Skynewsobj.URL)  #make it clear you want the URL of the object
+    page = requests.get(Foxnewsobj.URL)  #make it clear you want the URL of the object
     soup = bs(page.content, 'html.parser')
 
-    dictofURLlinks[Skynewsobj]= Skynewsobj.getlinks(soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-    dictofimagelinks[Skynewsobj]= Skynewsobj.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+    dictofURLlinks[Foxnewsobj]= Foxnewsobj.getlinks(soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+    dictofimagelinks[Foxnewsobj]= Foxnewsobj.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
 
     print(dictofURLlinks)
     print(dictofimagelinks)
