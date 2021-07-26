@@ -11,10 +11,12 @@ def main():
     #URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/','https://www.aljazeera.com/']  # Notice self.URLS is key to utilise the variable
 
     #for url in URLs:
-    BBCnewsobj = utilities.Classes.links('https://www.bbc.co.uk/')   #define object to attain info of BBC News as it is a object of class links stored in utilities.classes package
-    Skynewsobj = utilities.Classes.links('https://news.sky.com/uk')   #define object to attain info of Sky News as it is a object of class links stored in utilities.classes package
-    Foxnewsobj = utilities.Classes.links('https://www.foxnews.com/')   #define object to attain info of Fox News as it is a object of class links stored in utilities.classes package
-    AlJazeeranewsobj = utilities.Classes.links('https://www.aljazeera.com/') #define object to attain info of Al Jazeera News as it is a object of class links stored in utilities.classes package
+#No longer can write classes.links since links is a abstract class. We only want to use the base class.
+#There is the possibility of using base class and sub class, but once abstract classes are in the picture, we can only use sub classes
+    BBCnewsobj = utilities.Classes.BBC('https://www.bbc.co.uk/')
+    Skynewsobj = utilities.Classes.Sky('https://news.sky.com/uk')
+    Foxnewsobj = utilities.Classes.Fox('https://www.foxnews.com/')
+    AlJazeeranewsobj = utilities.Classes.AlJazeera('https://www.aljazeera.com/')
 #So, each links are passed through the class link, storing them as variables of that class
 #Above store the URL links in a global variable refered to as URL
 
