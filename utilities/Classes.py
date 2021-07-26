@@ -27,8 +27,8 @@ class BBC(links):
             if href.startswith('http'):  # http is a string
                 self.links.append(href)  # despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
 
-            elif not href.startswith('http'):   #elif is used in Python not elseif
-                self.links.append( "https: // search.bbc.co.uk / search" + href)
+            if not href.startswith('http'):   #elif is used in Python not elseif
+                self.links.append("https://search.bbc.co.uk/search"+ href)
 
         return self.links  # self.links was created as a local variable even if it wasnt passed in the paranthesis
 
@@ -41,7 +41,7 @@ class BBC(links):
             if not image == "None":  # prints out elements which are not none. Thus these image are elements of images which is of our interest
                 self.image_links.append(image_source)  # image_links alone isnt recognised as a variable
 
-            if not image.startwith('http'):
+            elif not image.startwith('http'):
                 self.image_links.append("https" + image_source)
         return self.image_links  # values you want returned from the links function #Edit
 
