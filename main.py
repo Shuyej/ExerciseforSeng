@@ -8,26 +8,25 @@ def main():
     dictofURLlinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
     dictofimagelinks = {} #defined here so information stored, but it is stored to ensure we access each NEW element
 
-    #URLs = ['https://www.bbc.co.uk/', 'https://news.sky.com/uk', 'https://www.foxnews.com/','https://www.aljazeera.com/']  # Notice self.URLS is key to utilise the variable
 
-    #for url in URLs:
 #No longer can write classes.links since links is a abstract class. We only want to use the base class.
 #There is the possibility of using base class and sub class, but once abstract classes are in the picture, we can only use sub classes
     BBCnewsobj = utilities.Classes.BBC('https://www.bbc.co.uk/')
     Skynewsobj = utilities.Classes.Sky('https://news.sky.com/uk')
     Foxnewsobj = utilities.Classes.Fox('https://www.foxnews.com/')
     AlJazeeranewsobj = utilities.Classes.AlJazeera('https://www.aljazeera.com/')
-#So, each links are passed through the class link, storing them as variables of that class
-#Above store the URL links in a global variable refered to as URL
 
-    page = requests.get(Foxnewsobj.URL)  #make it clear you want the URL of the object
-    soup = bs(page.content, 'html.parser')
-
-    dictofURLlinks[Foxnewsobj]= Foxnewsobj.getlinks(soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-    dictofimagelinks[Foxnewsobj]= Foxnewsobj.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
-
-    print(dictofURLlinks)
-    print(dictofimagelinks)
+    URLs = [BBCnewsobj, Skynewsobj, Foxnewsobj, AlJazeeranewsobj]
+    for url in URLs:
+        page = requests.get(url.URL)  #make it clear which object you want, and which variable of it you want
+    #since the class links is defined as anything in the paranthesis being URL we write URL.
+    #normally you would add request.get("[INSERT URL]") but this is no longer the case. So you need to specify which URL youwant
+        soup = bs(page.content, 'html.parser')
+        dictofURLlinks[url]= url.getlinks(soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+        dictofimagelinks[url]= url.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+        print(dictofURLlinks)
+        print(dictofimagelinks)
+#Notice if print statement is outside for loop, then you will only print output for BBC. Hence use it inside for loop to print output for all statements
    #Below is a ty error example
     #for url in URLs:
      #   try:
