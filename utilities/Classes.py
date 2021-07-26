@@ -25,8 +25,11 @@ class BBC(links):
             href = obj.get('href')  ##inside for loops we return variables
 
             if href.startswith('http'):  # http is a string
-                self.links.append(
-                    href)  # despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
+                self.links.append(href)  # despite links being defined outside the for loop, we add it inside, thus the variable is considered inside for loop
+
+            elif not href.startswith('http'):   #elif is used in Python not elseif
+                self.links.append( "https: // search.bbc.co.uk / search" + href)
+
         return self.links  # self.links was created as a local variable even if it wasnt passed in the paranthesis
 
     def getimages(self, soup):
