@@ -68,12 +68,15 @@ class Sky(links):
     def getimages(self, soup):
         images = soup.select('img')  # select used as it is better to find a wider range of image sources. find_all mostly restricted to jpg or http.
         self.image_links = []
+
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
             image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
 
-            if image_source != "https":
-                self.image_links.append("https/"+ image_source)
+            if self.image_links != "https":
+                self.image_links.append("https/"+image_source)
 
+
+        self.image_links.append(image_source)
 
         return self.image_links  # values you want returned from the links function #Edit
 
