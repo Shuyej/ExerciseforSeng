@@ -40,6 +40,7 @@ class BBC(links):
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
             image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
             print(image_source,type(image_source))
+
             if image_source != None:  # prints out elements which are not none. Thus these image are elements of images which is of our interest
                 self.image_links.append(image_source)  # image_links alone isnt recognised as a variable
 
@@ -52,7 +53,7 @@ class BBC(links):
 class Sky(links):
     def getlinks(self, soup):
         atag = soup.find_all('a')  # Never add this inside the for loop to be able to reuse soup.find_all('a)
-        self.links = []  #
+        self.links = []
 
         for obj in atag:
             href = obj.get('href')  ##inside for loops we return variables
@@ -72,11 +73,11 @@ class Sky(links):
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
             image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
 
-            if self.image_links != "https":
-                self.image_links.append("https/"+image_source)
+            if not image_source != ("https"):
+                self.image_links.append("https:/"+image_source) #We recieve URL links, but links dont work though. Will direct you to file error.
 
-
-        self.image_links.append(image_source)
+            if image_source.startswith("https"):
+                self.image_links.append(image_source) #Now we print only images that start with https in order to access them
 
         return self.image_links  # values you want returned from the links function #Edit
 
