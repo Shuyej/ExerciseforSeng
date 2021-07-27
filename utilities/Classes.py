@@ -39,10 +39,9 @@ class BBC(links):
 
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
             image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
-
-            if not image == "None":  # prints out elements which are not none. Thus these image are elements of images which is of our interest
+            print(image_source,type(image_source))
+            if image_source != None:  # prints out elements which are not none. Thus these image are elements of images which is of our interest
                 self.image_links.append(image_source)  # image_links alone isnt recognised as a variable
-
 
             #if not image.startwith('http'):
                 #self.image_links.append("https" + image_source)
@@ -72,12 +71,9 @@ class Sky(links):
         for image in images:  # added get src to find src of image. or else as seen in line 17, it will not work
             image_source = image.get('src')  # find src for each element, so being more specific, which wasnt the case when using find_all
 
-            if not image == "None":  # prints out elements which are not none. Thus these image are elements of images which is of our interest
-                self.image_links.append(image_source)  # image_links alone isnt recognised as a variable
+            if image_source != "https":
+                self.image_links.append("https/"+ image_source)
 
-            # if not image.startwith('http'):
-            # self.image_links.append("https" + image_source)
-            # line 45 and 46 will not run as you cant add http elements to jpg files
 
         return self.image_links  # values you want returned from the links function #Edit
 
@@ -142,3 +138,4 @@ class AlJazeera(links):
             # line 45 and 46 will not run as you cant add http elements to jpg files
 
         return self.image_links  # values you want returned from the links function #Edit
+
