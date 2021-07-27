@@ -15,18 +15,17 @@ def main():
     Skynewsobj = utilities.Classes.Sky('https://news.sky.com/uk')
     Foxnewsobj = utilities.Classes.Fox('https://www.foxnews.com/')
     AlJazeeranewsobj = utilities.Classes.AlJazeera('https://www.aljazeera.com/')
-       # URLs = [BBCnewsobj, Skynewsobj, Foxnewsobj, AlJazeeranewsobj]
-    #for url in URLs:
-
-
-    page = requests.get(Skynewsobj.URL)  #make it clear which object you want, and which variable of it you want
+    URLs = [BBCnewsobj, Skynewsobj, Foxnewsobj, AlJazeeranewsobj]
+    for url in URLs:
+        page = requests.get(url.URL)  #make it clear which object you want, and which variable of it you want
     #since the class links is defined as anything in the paranthesis being URL we write URL.
     #normally you would add request.get("[INSERT URL]") but this is no longer the case. So you need to specify which URL youwant
-    soup = bs(page.content, 'html.parser')
-    dictofURLlinks[Skynewsobj]= Skynewsobj.getlinks(soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
-    dictofimagelinks[Skynewsobj]= Skynewsobj.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
-    print(dictofURLlinks)
-    print(dictofimagelinks)
+        soup = bs(page.content, 'html.parser')
+        dictofURLlinks[url]= url.getlinks(soup) #How to link classes  # This means in the dictionary dictofURLlinks, the identifier is url, and we update it with links
+        dictofimagelinks[url]= url.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+        dictofimagelinks[url]= url.getimages(soup)#How to link classes  #store function links values inside dictofImagelinks,for each url,but note where you store values has been assigned as a {} thus, you store values as a dictionary
+        print(dictofURLlinks)
+        print(dictofimagelinks)
 #Notice if print statement is outside for loop, then you will only print output for BBC. Hence use it inside for loop to print output for all statements
    #Below is a ty error example
     #for url in URLs:
